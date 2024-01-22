@@ -16,12 +16,13 @@ const UserSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
       unique: true,
-      trim:true,
-      index:true
+      trim:true
+      
     },
-    avatar:{
-      type:String, //cloudinary//
-    },
+    avatar: {
+      type: String, // cloudinary url
+      required: true,},
+
     password: {
       type: String,
       required: [true, 'password is required'],
@@ -30,16 +31,21 @@ const UserSchema = new mongoose.Schema(
       type:Number,
       required:true
     },
+    Photo:{
+      type: String, // cloudinary url
+      required: true,
+    },
     refreshToken:{
       type:String
     },
-  },
+  
  
+  },
   { timestamps: true }
 );
 UserSchema.pre("save",async function (next) {
   if (this.isModified("password")) {
-    this.password=bcrypt.hash(this.password,8)
+    this.password=await bcrypt.hash(this.password,8)
     next()
   }
   
@@ -76,4 +82,4 @@ UserSchema.methods.generateRefreshToken=function name(params) {
 
 
 
-export const user = mongoose.model('userDetails', UserSchema);
+export const userDetails = mongoose.model('userDetails', UserSchema);
