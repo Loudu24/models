@@ -4,7 +4,7 @@ import  mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const lmsSchema=new mongoose.Schema({
     user:{
         type:Schema.Types.ObjectId,
-        ref:"userDetails"
+        ref:"User"
     },
     qpaper:{
         type:Schema.Types.ObjectId,
