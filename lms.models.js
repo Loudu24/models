@@ -1,4 +1,4 @@
-import mongoose, { Schema, SchemaType } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import  mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const lmsSchema=new mongoose.Schema({
@@ -24,5 +24,6 @@ const lmsSchema=new mongoose.Schema({
     },
   
 },{timestamps:true})
+lmsSchema.plugin(mongooseAggregatePaginate)
 
 export const Lms= mongoose.model("Lms",lmsSchema)
