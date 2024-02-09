@@ -1,0 +1,124 @@
+import mongoose, { Schema } from "mongoose";
+import  mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
+
+const lmsSchema=new mongoose.Schema({
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:"User"
+    },
+    qpaper:{
+        type:Schema.Types.ObjectId,
+        ref:"Qpaper"
+    },
+    notes:{
+        type:Schema.Types.ObjectId,
+        ref:"Notes"
+    },
+    qbank:{
+        type:Schema.Types.ObjectId,
+        ref:"Qbank"
+    },
+    syllabus:{
+        type:Schema.Types.ObjectId,
+        ref:"Syllabus"
+    },
+  
+},{timestamps:true})
+lmsSchema.plugin(mongooseAggregatePaginate)
+
+export const Lms= mongoose.model("Lms",lmsSchema)
+import mongoose from 'mongoose';
+const notesSchema = new mongoose.Schema(
+  {
+    subject: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
+    sem: {
+      type: Number,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+export const Notes = mongoose.model('Notes', notesSchema);
+import mongoose from 'mongoose';
+const qPaperSchema = new mongoose.Schema(
+  {
+    subject: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
+    sem: {
+      type: Number,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+export const Qpaper = mongoose.model('Qpaper', qPaperSchema);
+import mongoose from 'mongoose';
+const questionbankSchema = new mongoose.Schema(
+  {
+    subject: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
+    sem: {
+      type: Number,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+export const Qbank = mongoose.model('Qbank', questionbankSchema);
+import mongoose from 'mongoose';
+const syllabusSchema = new mongoose.Schema(
+  {
+    subject: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
+    sem: {
+      type: Number,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+export const Syllabus = mongoose.model('Syllabus', syllabusSchema);
+
+
+
